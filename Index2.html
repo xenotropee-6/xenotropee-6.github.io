@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffd8e5">
+<title>Heart-Thief Department 💗</title>
+<style>
+  :root {
+    --pink: #f7a9c4;
+    --pink-dark: #a62e5a;
+    --paper: #fffaf0;
+    --ink: #49363b;
+    --yellow: #f4c95d;
+    --green: #68845b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; padding: 24px 14px 40px;
+    color: var(--ink);
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    background:
+      radial-gradient(circle at 10% 10%, #fff2f6 0 7%, transparent 8%),
+      radial-gradient(circle at 90% 25%, #ffe9f0 0 8%, transparent 9%),
+      linear-gradient(135deg, #ffdce7, #fff0f5 48%, #ffe3ec);
+    overflow-x: hidden;
+  }
+  .sprinkle { position: fixed; pointer-events: none; opacity: .6; z-index: 0; animation: float 7s ease-in-out infinite; }
+  .s1 { top: 8%; left: 4%; font-size: 28px; } .s2 { top: 18%; right: 5%; font-size: 24px; animation-delay: -2s; }
+  .s3 { bottom: 10%; left: 6%; font-size: 26px; animation-delay: -4s; } .s4 { bottom: 16%; right: 5%; font-size: 30px; animation-delay: -1s; }
+  @keyframes float { 0%,100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-12px) rotate(6deg); } }
+  .wrap { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+  .eyebrow { text-align: center; color: var(--pink-dark); letter-spacing: .16em; font-size: .75rem; font-weight: 800; }
+  h1 { text-align: center; color: var(--pink-dark); font-size: clamp(1.8rem, 7vw, 3.1rem); margin: 10px 0 4px; line-height: 1.05; }
+  .subtitle { text-align: center; margin: 0 0 22px; font-size: .98rem; }
+  .birthday {
+    margin: 0 auto 18px; max-width: 560px; text-align: center;
+    padding: 15px 18px; border: 2px solid #f2a4bf; border-radius: 18px;
+    background: #fff6fa; box-shadow: 0 8px 22px #a62e5a12;
+  }
+  .birthday .count { color: var(--pink-dark); font-size: clamp(1.7rem, 6vw, 2.4rem); font-weight: 900; line-height: 1.15; }
+  .birthday p { margin: 5px 0; }
+  .birthday .small { font-size: .86rem; }
+  .ticket {
+    background: var(--paper); border: 2px dashed #e8a2b8; border-radius: 18px;
+    padding: clamp(18px, 4vw, 34px); box-shadow: 0 14px 35px #a62e5a20;
+    position: relative; overflow: hidden;
+  }
+  .topline { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .stamp { border: 2px solid var(--pink); color: var(--pink-dark); border-radius: 50%; padding: 10px 13px; transform: rotate(8deg); font-size: .7rem; font-weight: 900; text-align: center; }
+  .sunflower { font-size: 2.3rem; }
+  h2 { margin: 16px 0 4px; text-align: center; font-size: clamp(1.5rem, 5vw, 2.25rem); color: #b33766; letter-spacing: .02em; }
+  .under { text-align: center; font-weight: 700; letter-spacing: .12em; font-size: .76rem; }
+  .rule { border: 0; border-top: 1px dashed #d7a8b4; margin: 22px 0; }
+  .details { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .detail { padding: 10px 12px; background: #fff0f5; border-radius: 11px; }
+  .label { color: var(--pink-dark); font-size: .75rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+  .evidence { margin: 10px 0 0; padding-left: 0; list-style: none; }
+  .evidence li { margin: 9px 0; padding-left: 28px; position: relative; line-height: 1.4; }
+  .evidence li::before { content: "♥"; color: #d94d83; position: absolute; left: 5px; }
+  .sentence { border-left: 4px solid var(--yellow); padding: 12px 14px; background: #fff8df; border-radius: 0 12px 12px 0; line-height: 1.5; }
+  .buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 22px 0 0; }
+  button { border: 0; border-radius: 999px; padding: 13px 18px; font: inherit; font-weight: 800; cursor: pointer; transition: transform .18s, box-shadow .18s; }
+  button:hover { transform: translateY(-2px); box-shadow: 0 6px 14px #a62e5a24; }
+  button:focus-visible { outline: 3px solid #7d3450; outline-offset: 3px; }
+  .primary { background: #d94d83; color: white; }
+  .secondary { background: #ffe4ed; color: #96365b; }
+  .secret { display: none; margin-top: 18px; padding: 20px; border: 1px solid #f0b1c6; border-radius: 14px; background: #fff3f7; text-align: center; animation: pop .4s ease-out; }
+  .secret.show { display: block; }
+  .birthday-secret { display: none; margin-top: 14px; padding: 18px; border-radius: 14px; background: #fff8df; border: 1px dashed #e6c76b; text-align: center; animation: pop .4s ease-out; }
+  .birthday-secret.show { display: block; }
+  .birthday-secret p { line-height: 1.65; margin: 9px 0; }
+  .secret h3 { margin: 0 0 8px; color: var(--pink-dark); }
+  .secret p { line-height: 1.65; margin: 8px 0; }
+  @keyframes pop { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
+  .footer { text-align: center; font-size: .88rem; margin-top: 20px; color: #87546a; }
+  .tiny { font-size: .78rem; opacity: .85; }
+  .burst { position: fixed; z-index: 5; pointer-events: none; animation: burst 1.8s ease-out forwards; }
+  @keyframes burst { from { opacity: 1; transform: translateY(0) scale(.7) rotate(0); } to { opacity: 0; transform: translateY(-130px) scale(1.4) rotate(30deg); } }
+  @media (min-width: 620px) { .details { grid-template-columns: 1fr 1fr; } .detail.wide { grid-column: 1 / -1; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<div class="sprinkle s1">🌻</div><div class="sprinkle s2">💗</div><div class="sprinkle s3">✨</div><div class="sprinkle s4">🎀</div>
+<main class="wrap">
+  <div class="eyebrow">♥ THE OFFICIAL ♥</div>
+  <h1>HEART-THIEF DEPARTMENT</h1>
+  <p class="subtitle">A very serious investigation into one very cute girl.</p>
+
+  <section class="birthday" aria-label="Birthday countdown">
+    <div aria-hidden="true">🎀 💗 🌻 💗 🎀</div>
+    <p class="count">9 DAYS LEFT!!</p>
+    <p><strong>until my favourite girl’s birthday 🥹</strong></p>
+    <p class="small">The countdown is on, pretty girl… and yes, you're getting extra love in the meantime. 💌</p>
+  </section>
+
+  <section class="ticket" aria-label="Heart theft citation">
+    <div class="topline">
+      <span class="sunflower" aria-hidden="true">🌻</span>
+      <div class="stamp">VALID<br>FOREVER ♡</div>
+      <span class="sunflower" aria-hidden="true">🌻</span>
+    </div>
+    <h2>OFFICIAL TICKET</h2>
+    <p class="under">FOR STEALING MY HEART (WITHOUT PERMISSION)</p>
+    <hr class="rule">
+    <div class="details">
+      <div class="detail"><span class="label">Suspect</span>You, my pretty girl 💗</div>
+      <div class="detail"><span class="label">Offence</span>Stealing my heart and causing a suspicious amount of smiling.</div>
+      <div class="detail wide"><span class="label">Evidence collected</span>
+        <ul class="evidence">
+          <li>Your cuteness (highly suspicious).</li>
+          <li>Your messages (they hit different).</li>
+          <li>The way you make ordinary days feel nicer.</li>
+          <li>Just being you. Honestly, that's enough.</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="rule">
+    <div class="sentence"><strong>YOUR SENTENCE:</strong> Lifetime membership in my favourite-person club. No appeals. 💌</div>
+    <p style="text-align:center; margin:18px 0 0;">And the worst part? <strong>I'd let you do it again.</strong> ♡</p>
+    <div class="buttons">
+      <button class="primary" id="revealBtn" type="button">VIEW YOUR SENTENCE 💗</button>
+      <button class="secondary" id="confettiBtn" type="button">CAUSE A DISTRACTION ✨</button>
+      <button class="secondary" id="birthdayBtn" type="button">A LITTLE BIRTHDAY SECRET 🎂</button>
+    </div>
+    <section class="birthday-secret" id="birthdaySecret" aria-live="polite">
+      <h3>9 DAYS UNTIL YOUR DAY, MY GIRL 🎂💗</h3>
+      <p>I'm not even gonna pretend you're just another date on the calendar to me. Your birthday is the day someone really special came into this world—and I'm genuinely glad you did. 🥹</p>
+      <p>For now, here's your tiny reminder before the big day: you don't have to do anything extraordinary to be special to me. Being you is already more than enough.</p>
+      <p>And if I could give you one thing before your birthday, it'd be the chance to see yourself through my eyes for just a minute—you'd understand why I feel so lucky that we found each other. 🌻🤍</p>
+      <p><strong>Birthday girl loading… 9 days to go. I adore you, pretty girl. 🎀</strong></p>
+    </section>
+    <section class="secret" id="secret" aria-live="polite">
+      <h3>CASE CLOSED. 💗</h3>
+      <p>I've decided I don't want my heart back.</p>
+      <p>Turns out, the girl who was my friend became the girl I fell for—and I'm really glad it was you. 🌻</p>
+      <p><strong>Signed, your slightly guilty favourite boy ♡</strong></p>
+    </section>
+  </section>
+  <p class="footer">No refunds. No returns. Just a ridiculous amount of affection. 🌻<br><span class="tiny">Made especially for you, my girl.</span></p>
+</main>
+<script>
+  const revealBtn = document.getElementById('revealBtn');
+  const secret = document.getElementById('secret');
+  const birthdayBtn = document.getElementById('birthdayBtn');
+  const birthdaySecret = document.getElementById('birthdaySecret');
+  birthdayBtn.addEventListener('click', () => {
+    const open = birthdaySecret.classList.toggle('show');
+    birthdayBtn.textContent = open ? 'HIDE THE BIRTHDAY SECRET 🎀' : 'A LITTLE BIRTHDAY SECRET 🎂';
+    if (open) burstHearts(28);
+  });
+  revealBtn.addEventListener('click', () => {
+    const open = secret.classList.toggle('show');
+    revealBtn.textContent = open ? 'HIDE YOUR SENTENCE 💗' : 'VIEW YOUR SENTENCE 💗';
+    if (open) burstHearts(24);
+  });
+  document.getElementById('confettiBtn').addEventListener('click', () => burstHearts(34));
+  function burstHearts(count) {
+    const symbols = ['💗', '🌻', '💖', '✨', '💕', '🎀'];
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement('span');
+      el.className = 'burst';
+      el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      el.style.left = (8 + Math.random() * 84) + 'vw';
+      el.style.top = (40 + Math.random() * 45) + 'vh';
+      el.style.fontSize = (16 + Math.random() * 16) + 'px';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1900);
+    }
+  }
+</script>
+</body>
+</html>
